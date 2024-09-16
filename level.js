@@ -25,7 +25,6 @@ const context = canvas.getContext('2d');
 //     buttons.push(document.getElementById(i + 1));
 // } 
 
-// console.log(buttons)
 const saveButton1 = document.getElementById('1');
 const loadButton1 = document.getElementById('2');
 const saveButton2 = document.getElementById('3');
