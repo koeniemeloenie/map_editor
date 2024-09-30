@@ -79,23 +79,38 @@ console.log(typeof map);
 
 let screenBlockLength = mapWidth/14;
 
-const menuHeight = 0.05 * innerHeight;
-const menuPos = 0.05 * innerWidth;
-const curveRate = 12;
-const menuButtonGrey = 190;
-const menuButtonLineWidth = 2;
-let   menuButtonGreen = 190;
-let   menuButtonBlue = 225;
+
 
 const menuButton = {
-    rect: {
-        x: innerWidth - menuPos,
-        y: menuPos / 2,
-    },
+    menuHeight: 0.05 * innerHeight,
+    menuPos: 0.05 * innerWidth,
+    curveRate: 12,
+    menuButtonGrey: 190,
+    menuButtonLineWidth: 2, 
+    menuButtonGreen: 190,
+    menuButtonBlue: 225,
 }
 
+const menuButtonLineOne = {
+    x1: innerWidth + (-menuButton.menuPos + (0.25 *menuButton.menuHeight)),
+    y1: menuButton.menuPos / 2 + 0.25 * menuButton.menuHeight,
+    x2: innerWidth + (-menuButton.menuPos + (0.75 *menuButton.menuHeight)),
+    y2: menuButton.menuPos / 2 + 0.25 * menuButton.menuHeight,
+}
+const menuButtonLineTwo = {
+    x1: innerWidth + (-menuButton.menuPos + (0.25 *menuButton.menuHeight)),
+    y1: menuButton.menuPos / 2 + 0.5 * menuButton.menuHeight,
+    x2: innerWidth + (-menuButton.menuPos + (0.75 *menuButton.menuHeight)),
+    y2: menuButton.menuPos / 2 + 0.5 * menuButton.menuHeight,
+}
+const menuButtonLineThree = {
+    x1: innerWidth + (-menuButton.menuPos + (0.25 *menuButton.menuHeight)),
+    y1: menuButton.menuPos / 2 + 0.75 * menuButton.menuHeight,
+    x2: innerWidth + (-menuButton.menuPos + (0.75 *menuButton.menuHeight)),
+    y2: menuButton.menuPos / 2 + 0.75 * menuButton.menuHeight,
+}
+console.log(menuButton.menuPos);
 const animate = () => {
-    
     context.clearRect(0, 0, innerWidth, innerHeight);
     
     context.strokeStyle = 'lime';
@@ -123,10 +138,19 @@ const animate = () => {
         }
     }
 
-    context.fillStyle = `rgb(190,${menuButtonGreen},${menuButtonBlue})`;
+    context.beginPath();
+    context.moveTo(menuButtonLineOne.x1, menuButtonLineOne.y1);
+    context.lineTo(menuButtonLineOne.x2, menuButtonLineOne.y2);
+    context.moveTo(menuButtonLineTwo.x1, menuButtonLineTwo.y1);
+    context.lineTo(menuButtonLineTwo.x2, menuButtonLineTwo.y2);
+    context.moveTo(menuButtonLineThree.x1, menuButtonLineThree.y1);
+    context.lineTo(menuButtonLineThree.x2, menuButtonLineThree.y2);
+
+
+    context.fillStyle = `rgb(190,${menuButton.menuButtonGreen},${menuButton.menuButtonBlue})`;
     context.strokeStyle = 'black';
-    context.lineWidth = menuButtonLineWidth;
-    context.roundRect(innerWidth - menuPos, menuPos / 2, menuHeight, menuHeight,curveRate )
+    context.lineWidth = menuButton.menuButtonLineWidth;
+    context.roundRect(innerWidth - menuButton.menuPos, menuButton.menuPos / 2, menuButton.menuHeight, menuButton.menuHeight,menuButton.curveRatecurveRate )
     context.fill();
     context.stroke();
                     

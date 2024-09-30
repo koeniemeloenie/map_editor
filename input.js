@@ -1,5 +1,5 @@
 function insideRect(mouseX, mouseY, rectPos) {
-    if(mouseX >= innerWidth - rectPos && mouseY >= rectPos / 2 && mouseX <= (innerWidth - rectPos)+rectPos / 2 && menuHeight && mouseY <= (rectPos / 2)+menuHeight ){
+    if(mouseX >= innerWidth - rectPos && mouseY >= rectPos / 2 && mouseX <= (innerWidth - rectPos)+rectPos / 2 && menuButton.menuHeight && mouseY <= (rectPos / 2)+menuButton.menuHeight ){
         return true;
         
     }
@@ -20,7 +20,7 @@ canvas.addEventListener('mousemove', (evt) => {
     mouse.x = x;
     mouse.y = y;
 
-   if(insideRect(x, y, menuPos)){
+   if(insideRect(x, y, menuButton.menuPos)){
     menuButtonBlue = 0;
     menuButtonGreen = 0;
    }
@@ -36,10 +36,10 @@ canvas.addEventListener('mouseup', (evt) => {
     const y = Math.trunc(evt.offsetY  / screenBlockLength);
     const x = Math.trunc(evt.offsetX / screenBlockLength);
     
-    if (map[y][x] == "x" && insideRect(mouse.x, mouse.y, menuPos) == false ) {
+    if (map[y][x] == "x" && insideRect(mouse.x, mouse.y, menuButton.menuPos) == false ) {
         map[y][x] = "."; 
     
-    } else if(map[y][x] == "."&& insideRect(mouse.x, mouse.y, menuPos) == false) {
+    } else if(map[y][x] == "."&& insideRect(mouse.x, mouse.y, menuButton.menuPos) == false) {
         map[y][x] = "x";
   
     }
