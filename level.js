@@ -1,25 +1,4 @@
-// const container = document.createElement('div');
-
-// container.style.display = 'flex';
-// // container.style.position = 'absolute';
-// container.style.left = 0;
-// container.style.top = 0;
-// container.style.alignContent = 'center';
-// container.style.justifyItems = 'center';
-// container.style.height = '100vh';
-// container.style.width = '100vw';
-
-const canvas = document.createElement("canvas");
-canvas.width = innerWidth;
-canvas.height = 700;
-
 let mapWidth = canvas.width;
-
-document.body.style.margin = "0";
-// document.body.appendChild(container);
-document.body.appendChild(canvas)
-
-const context = canvas.getContext('2d');
 
 const saveButton1 = document.getElementById('1');
 const loadButton1 = document.getElementById('2');
@@ -155,42 +134,4 @@ const animate = () => {
     requestAnimationFrame(animate);
 };   
 
-canvas.style.backgroundColor = "darkblue";
-
 animate();
-
-canvas.addEventListener('mousemove', (evt) => {
-
-    const y = Math.trunc(evt.offsetY);
-    const x = Math.trunc(evt.offsetX);
-
-    if(x >= innerWidth - menuPos && y >= menuPos / 2, x <= (innerWidth - menuPos)+menuPos / 2, menuHeight, y <= (menuPos / 2)+menuHeight ){
-        menuButtonBlue = 0;
-        menuButtonGreen = 0;
-    }
-    else{
-        menuButtonBlue = 255;
-        menuButtonGreen = 190;
-    }
-    
-})
-
-canvas.addEventListener('mouseup', (evt) => {
-
-    const y = Math.trunc(evt.offsetY  / screenBlockLength);
-    const x = Math.trunc(evt.offsetX / screenBlockLength);
-    
-    if (map[y][x] == "x") {
-        map[y][x] = ".";
-    
-    } else if(map[y][x] == ".") {
-        map[y][x] = "x";
-  
-    }
-
-})
-addEventListener('keyup', (evt) => {
-console.log(evt)
-}
-)
-
