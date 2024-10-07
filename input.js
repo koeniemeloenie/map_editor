@@ -31,7 +31,7 @@ canvas.addEventListener('mousemove', (evt) => {
     
 })
 
-canvas.addEventListener('mouseup', (evt) => {
+const changeTileMap = (evt) => {
 
     const y = Math.trunc(evt.offsetY  / screenBlockLength);
     const x = Math.trunc(evt.offsetX / screenBlockLength);
@@ -43,9 +43,18 @@ canvas.addEventListener('mouseup', (evt) => {
         map[y][x] = "x";
   
     }
+}
+
+canvas.addEventListener('mouseup', (evt) => {
+    changeTileMap();
 
 })
-addEventListener('keyup', (evt) => {
-console.log(evt)
+addEventListener('keydown', (evt) => {
+    if ( player.moving == true) return;
+
+    if (evt.keycode == 'KeyW') player.goUp();
+    if (evt.keycode == 'KeyA') player.goLeft();
+    if (evt.keycode == 'KeyS') player.goDown();
+    if (evt.keycode == 'KeyD') player.goRight();
 }
 )
