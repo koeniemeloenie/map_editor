@@ -1,12 +1,14 @@
 const getPlayer = () => {
-    const acc = {x: 0, y: 0};
-    const vel = {x: 0, y: 0};
-    const fill = {r: 0, g:200 , b:70};
-    let moving = false;
+    const properties = {
+        acc: {x: 0, y: 0},
+        vel: {x: 0, y: 0},
+        fill: {r: 0, g:200 , b:70},
+        moving: false,
+    }
 
     const draw = () => {
         context.beginPath();
-        context.fillStyle = `rgb(${fill.r}, ${fill.g}, ${fill.b})`;
+        context.fillStyle = `rgb(${properties.fill.r}, ${properties.fill.g}, ${properties.fill.b})`;
         context.fillRect(pos.x * screenBlockLength, pos.y * screenBlockLength, screenBlockLength, screenBlockLength);
     }
 
@@ -23,15 +25,45 @@ const getPlayer = () => {
     }
 
     const pos = getPosFromMap();
-
     const goUp = () => {
-    //
+        properties.vel.y = -.1;
+        properties.moving = true;
     }
-    
-    
+    const goLeft = () => {
+        properties.vel.x = -.1;
+        properties.moving = true;
+
+    }
+    const goDown = () => {
+        properties.vel.y = .1;
+        properties.moving = true;
+    }
+    const goRight = () => {
+        properties.vel.x = .1;
+        properties.moving = true;
+    }
+    const stop = () => {
+        properties.vel.x = 0;
+        properties.vel.y = 0;
+        properties.moving = false;
+        editMode = true;
+    }
+    const update = () => {
+        pos.x += properties.vel.x;
+        pos.y += properties.vel.y;
+        if (properties.moving) editMode = false;
+
+        const x = Math.trunc(pos.y);
+        const y = Math.trunc(pos.x);
+        const block = map[y][x];
 
 
-    return {draw, getPosFromMap, moving};
+        console.log(
+        block    
+        )
+    }
+
+    return {draw, getPosFromMap, properties, update, goUp, goLeft, goDown, goRight, stop};
 }
 
 const player = getPlayer();

@@ -77,6 +77,8 @@ const menuButtonLineThree = {
 }
 
 const animate = () => {
+    player.update();
+
     context.clearRect(0, 0, innerWidth, innerHeight);
     
 
@@ -116,6 +118,5 @@ const animate = () => {
     // context.fill();
     // context.stroke();
                     
-
     requestAnimationFrame(animate);
 };   
