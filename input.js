@@ -58,12 +58,12 @@ addEventListener('keydown', (evt) => {
     if (evt.code == 'KeyD') player.goRight();
 }
 )
-addEventListener('keyup', (evt) => {
-    if (player.properties.moving == false) return;
+// addEventListener('keyup', (evt) => {
+//     if (player.properties.moving == false) return;
 
-    if (evt.code == 'KeyW') player.stop();
-    if (evt.code == 'KeyA') player.stop();
-    if (evt.code == 'KeyS') player.stop();
-    if (evt.code == 'KeyD') player.stop();
-}
-)
+//     if (evt.code == 'KeyW') player.stop();
+//     if (evt.code == 'KeyA') player.stop();
+//     if (evt.code == 'KeyS') player.stop();
+//     if (evt.code == 'KeyD') player.stop();
+// }
+// )

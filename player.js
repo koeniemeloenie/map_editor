@@ -4,6 +4,8 @@ const getPlayer = () => {
         vel: {x: 0, y: 0},
         fill: {r: 0, g:200 , b:70},
         moving: false,
+        xInt: 0,
+        yInt: 0,
     }
 
     const draw = () => {
@@ -18,6 +20,7 @@ const getPlayer = () => {
             for( let x = 0; x < map[y].length; x++) {
                 // columns
                 if (map[y][x] == 'P') {
+                    map[y][x] = "."; 
                     return {x, y}
                 }
             }
@@ -48,25 +51,82 @@ const getPlayer = () => {
         properties.moving = false;
         editMode = true;
     }
+
+
     const update = () => {
+
         pos.x += properties.vel.x;
         pos.y += properties.vel.y;
         if (properties.moving) editMode = false;
 
-        const x = Math.trunc(pos.y);
-        const y = Math.trunc(pos.x);
+        let x = Math.trunc(pos.x);
+        let y = Math.trunc(pos.y);
+
+        //mapborder check
+        if (pos.x> map[1].length-1) {
+            pos.x = map[1].length-1;
+            player.stop();
+            }
+        if (pos.x <0 ){ 
+            pos.x = 0;
+            player.stop();
+            }
+        if (pos.y > map.length-1){ 
+            pos.y = map.length-1;
+            player.stop();
+            }
+        if (pos.y <0 ){
+            pos.y = 0;
+            player.stop();
+        } 
+        
         const block = map[y][x];
 
+        
+        //wall check
+        if(properties.moving){
+            
+            
+            if(properties.vel.y < 0){
+                if (block == "X"){ 
+                    player.stop();
+                    pos.y = y+1;
+                }
+                if( properties.yInt !== y){
+                    map[y+1][x]= "-";
+                }
+           } 
+           if(properties.vel.y > 0){
+            if (map[y+1][x] == "X"){ 
+                player.stop();
+                pos.y = y;
+                }
+                if( properties.yInt !== y){
+                    map[y][x]= "-";
+                }
+            } 
+           if(properties.vel.x < 0){
+            if (block == "X"){ 
+                player.stop();
+                pos.x = x+1;
+                }
+           } 
+           if(properties.vel.x > 0){
+            if (map[y][x+1] == "X"){ 
+                player.stop();
+                pos.x = x;
+            }
+           } 
 
-        console.log(
-        block    
-        )
+        }
+    
+        properties.xInt = x;
+        properties.yInt = y;
     }
 
     return {draw, getPosFromMap, properties, update, goUp, goLeft, goDown, goRight, stop};
 }
 
 const player = getPlayer();
-// /console.log(player.getPosFromMap());
 
 animate();

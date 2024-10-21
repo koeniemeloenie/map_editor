@@ -29,15 +29,15 @@ function loadLevel(level) {
 // .=niks
 // 'P' = Player
 let map = [ 
-    ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
-    ["x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", "x", "x", "x"],
-    ["x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", "x", "x", "x"],
-    ["x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", "x", "x", "x"],
-    ["x", "P", "x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", "x", "x", "x"],
-    ["x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", "x", "x", "x"],
-    ["x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", "x", "x", "x"],
-    ["x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", ".", "x", "x", "x", "x"],
-    ["x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x", "x"],
+    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
+    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
+    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
+    ["X", "P", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
+    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
+    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
+    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
 
 ];
 
@@ -80,24 +80,40 @@ const animate = () => {
     player.update();
 
     context.clearRect(0, 0, innerWidth, innerHeight);
-    
+
 
     for (let y = 0; y < map.length; y++) {
         // rows
         for( let x = 0; x < map[y].length; x++) {
             // columns
             switch (map[y][x]) {
-                case "x":
+                case "X":
                     context.beginPath();
-                    context.strokeStyle = 'lime';
-                    context.lineWidth = 4;
+                    context.strokeStyle = 'black';
+                    context.lineWidth = 2;
                     context.fillStyle = 'maroon';
                     context.rect((x *screenBlockLength), (y * screenBlockLength), screenBlockLength,screenBlockLength);
                     context.fill();
                     context.stroke();
                     break
-                case 'P':
-                     player.draw();
+                case ".":
+                    context.beginPath();   
+                    context.strokeStyle = 'black';   
+                    context.lineWidth = 2;      
+                    context.fillStyle = 'skyblue';
+                    context.rect((x *screenBlockLength), (y * screenBlockLength), screenBlockLength,screenBlockLength);
+                    context.fill();
+                    context.stroke();
+                    break 
+                    case "-":
+                        context.beginPath();   
+                        context.strokeStyle = 'black';   
+                        context.lineWidth = 2;      
+                        context.fillStyle = 'orange';
+                        context.rect((x *screenBlockLength), (y * screenBlockLength), screenBlockLength,screenBlockLength);
+                        context.fill();
+                        context.stroke();
+                        break 
             }
         }
     }
@@ -117,6 +133,6 @@ const animate = () => {
     // context.roundRect(innerWidth - menuButton.menuPos, menuButton.menuPos / 2, menuButton.menuHeight, menuButton.menuHeight,menuButton.curveRatecurveRate )
     // context.fill();
     // context.stroke();
-                    
+    player.draw();  
     requestAnimationFrame(animate);
 };   
