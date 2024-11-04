@@ -45,7 +45,6 @@ if (editMode){
     
     } else if(map[y][x] == "."&& insideRect(mouse.x, mouse.y, menuButton.menuPos) == false) {
         map[y][x] = "X";
-        map[y-1][x+1] = "X";
     }
 }
 });

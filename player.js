@@ -11,7 +11,11 @@ const getPlayer = () => {
     const draw = () => {
         context.beginPath();
         context.fillStyle = `rgb(${properties.fill.r}, ${properties.fill.g}, ${properties.fill.b})`;
-        context.fillRect(pos.x * screenBlockLength, pos.y * screenBlockLength, screenBlockLength, screenBlockLength);
+        context.strokeStyle = 'darkorange'
+        context.lineWidth = screenBlockLength/12;
+        context.rect(pos.x * screenBlockLength, pos.y * screenBlockLength, screenBlockLength, screenBlockLength);
+        context.stroke();
+        context.fill();
     }
 
     const getPosFromMap = () => {
