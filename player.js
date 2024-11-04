@@ -110,11 +110,17 @@ const getPlayer = () => {
                 player.stop();
                 pos.x = x+1;
                 }
+                if( properties.xInt !== x){
+                    map[y][x+1]= "-";
+                }
            } 
            if(properties.vel.x > 0){
             if (map[y][x+1] == "X"){ 
                 player.stop();
                 pos.x = x;
+            }
+            if( properties.xInt !== x){
+                map[y][x]= "-";
             }
            } 
 

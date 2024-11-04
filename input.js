@@ -36,14 +36,15 @@ canvas.addEventListener('mousemove', (evt) => {
 
 canvas.addEventListener('mouseup', (evt) => {
 if (editMode){
+    console.log("5")
     const y = Math.trunc(evt.offsetY  / screenBlockLength);
     const x = Math.trunc(evt.offsetX / screenBlockLength);
     
-    if (map[y][x] == "x" && insideRect(mouse.x, mouse.y, menuButton.menuPos) == false) {
+    if (map[y][x] == "X" && insideRect(mouse.x, mouse.y, menuButton.menuPos) == false) {
         map[y][x] = "."; 
     
     } else if(map[y][x] == "."&& insideRect(mouse.x, mouse.y, menuButton.menuPos) == false) {
-        map[y][x] = "x";
+        map[y][x] = "X";
   
     }
 }
