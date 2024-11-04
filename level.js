@@ -29,14 +29,14 @@ function loadLevel(level) {
 // .=niks
 // 'P' = Player
 let map = [ 
-    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
     ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
-    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
-    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
-    ["X", "P", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
-    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
-    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
-    ["X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", ".", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "P", "X", "X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
+    ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
     ["X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X"],
 
 ];
@@ -89,9 +89,9 @@ const animate = () => {
             switch (map[y][x]) {
                 case "X":
                     context.beginPath();
-                    context.strokeStyle = 'black';
-                    context.lineWidth = 2;
-                    context.fillStyle = 'maroon';
+                    context.strokeStyle = 'darkred';
+                    context.lineWidth = 1;
+                    context.fillStyle = 'darkred';
                     context.rect((x *screenBlockLength), (y * screenBlockLength), screenBlockLength,screenBlockLength);
                     context.fill();
                     context.stroke();
@@ -99,17 +99,17 @@ const animate = () => {
                 case ".":
                     context.beginPath();   
                     context.strokeStyle = 'black';   
-                    context.lineWidth = 2;      
-                    context.fillStyle = 'skyblue';
+                    context.lineWidth = 1;      
+                    context.fillStyle = 'black';
                     context.rect((x *screenBlockLength), (y * screenBlockLength), screenBlockLength,screenBlockLength);
                     context.fill();
                     context.stroke();
                     break 
                     case "-":
                         context.beginPath();   
-                        context.strokeStyle = 'black';   
-                        context.lineWidth = 2;      
-                        context.fillStyle = 'orange';
+                        context.strokeStyle = 'white';   
+                        context.lineWidth = 1;      
+                        context.fillStyle = 'white';
                         context.rect((x *screenBlockLength), (y * screenBlockLength), screenBlockLength,screenBlockLength);
                         context.fill();
                         context.stroke();

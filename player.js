@@ -2,7 +2,7 @@ const getPlayer = () => {
     const properties = {
         acc: {x: 0, y: 0},
         vel: {x: 0, y: 0},
-        fill: {r: 0, g:200 , b:70},
+        fill: {r: 255, g:100 , b:0},
         moving: false,
         xInt: 0,
         yInt: 0,
@@ -101,7 +101,7 @@ const getPlayer = () => {
                 player.stop();
                 pos.y = y;
                 }
-                if( properties.yInt !== y){
+                if( properties.yInt-1 !== y){
                     map[y][x]= "-";
                 }
             } 
@@ -119,7 +119,7 @@ const getPlayer = () => {
                 player.stop();
                 pos.x = x;
             }
-            if( properties.xInt !== x){
+            if( properties.xInt-1 !== x){
                 map[y][x]= "-";
             }
            } 
