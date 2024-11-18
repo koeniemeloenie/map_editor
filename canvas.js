@@ -2,6 +2,13 @@ const canvas = document.createElement("canvas");
 const container = document.getElementById('container');
 canvas.width = innerWidth;
 canvas.height = innerHeight;
+console.log(innerWidth);
+
+function load() {
+    console.log(innerWidth);
+}
+
+window.onload = load;
 
 container.appendChild(canvas);
 
